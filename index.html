@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ابزارک | ابزارهای رایگان آنلاین</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:25px 15px;
+    text-align:center;
+}
+
+header h1{
+    margin:0 0 8px;
+    font-size:30px;
+}
+
+header p{
+    margin:0;
+    color:#d1d5db;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:20px 15px 40px;
+}
+
+.card{
+    background:white;
+    padding:22px;
+    margin:18px 0;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-top:0;
+    font-size:22px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    border:0;
+    border-radius:10px;
+    background:#111827;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+.result{
+    margin-top:15px;
+    padding:13px;
+    background:#f3f4f6;
+    border-radius:10px;
+    font-weight:bold;
+    text-align:center;
+    min-height:20px;
+}
+
+footer{
+    text-align:center;
+    color:#6b7280;
+    padding:20px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛠 ابزارک</h1>
+    <p>ابزارهای کاربردی رایگان آنلاین</p>
+</header>
+
+<div class="container">
+
+<!-- درصد -->
+<div class="card">
+
+<h2>🧮 محاسبه درصد</h2>
+
+<input id="number" type="number" placeholder="عدد">
+
+<input id="percent" type="number" placeholder="درصد">
+
+<button onclick="calculatePercent()">محاسبه</button>
+
+<div id="percentResult" class="result"></div>
+
+</div>
+
+
+<!-- تخفیف -->
+<div class="card">
+
+<h2>💰 محاسبه تخفیف</h2>
+
+<input id="price" type="number" placeholder="قیمت کالا">
+
+<input id="discount" type="number" placeholder="درصد تخفیف">
+
+<button onclick="calculateDiscount()">محاسبه قیمت نهایی</button>
+
+<div id="discountResult" class="result"></div>
+
+</div>
+
+
+<!-- سن -->
+<div class="card">
+
+<h2>🎂 محاسبه سن</h2>
+
+<input id="birthYear" type="number" placeholder="سال تولد شمسی">
+
+<button onclick="calculateAge()">محاسبه سن</button>
+
+<div id="ageResult" class="result"></div>
+
+</div>
+
+
+<!-- سود -->
+<div class="card">
+
+<h2>📈 محاسبه سود</h2>
+
+<input id="buyPrice" type="number" placeholder="قیمت خرید">
+
+<input id="sellPrice" type="number" placeholder="قیمت فروش">
+
+<button onclick="calculateProfit()">محاسبه سود</button>
+
+<div id="profitResult" class="result"></div>
+
+</div>
+
+
+<!-- تبدیل واحد -->
+<div class="card">
+
+<h2>📏 تبدیل متر به سانتی‌متر</h2>
+
+<input id="meter" type="number" placeholder="مقدار بر حسب متر">
+
+<button onclick="convertMeter()">تبدیل</button>
+
+<div id="meterResult" class="result"></div>
+
+</div>
+
+
+<!-- رمز -->
+<div class="card">
+
+<h2>🔐 ساخت رمز عبور قوی</h2>
+
+<button onclick="generatePassword()">ساخت رمز</button>
+
+<div id="passwordResult" class="result"></div>
+
+</div>
+
+
+<!-- شمارش متن -->
+<div class="card">
+
+<h2>📝 شمارش کلمات و حروف</h2>
+
+<input id="textInput" type="text" placeholder="متن خود را وارد کنید">
+
+<button onclick="countText()">شمارش</button>
+
+<div id="textResult" class="result"></div>
+
+</div>
+
+</div>
+
+<footer>
+ساخته شده با ❤️ برای استفاده رایگان
+</footer>
+
+
+<script>
+
+function calculatePercent(){
+
+let number = Number(document.getElementById("number").value);
+let percent = Number(document.getElementById("percent").value);
+
+if(!number || !percent){
+document.getElementById("percentResult").innerText="لطفاً اطلاعات را وارد کنید";
+return;
+}
+
+let result = number * percent / 100;
+
+document.getElementById("percentResult").innerText =
+"نتیجه: " + result;
+
+}
+
+
+function calculateDiscount(){
+
+let price = Number(document.getElementById("price").value);
+let discount = Number(document.getElementById("discount").value);
+
+if(!price || discount < 0){
+document.getElementById("discountResult").innerText="اطلاعات را کامل وارد کنید";
+return;
+}
+
+let amount = price * discount / 100;
+let finalPrice = price - amount;
+
+document.getElementById("discountResult").innerText =
+"قیمت نهایی: " + finalPrice.toLocaleString() + " تومان";
+
+}
+
+
+function calculateAge(){
+
+let birth = Number(document.getElementById("birthYear").value);
+
+if(!birth){
+document.getElementById("ageResult").innerText="سال تولد را وارد کنید";
+return;
+}
+
+let age = 1405 - birth;
+
+document.getElementById("ageResult").innerText =
+"سن تقریبی شما: " + age + " سال";
+
+}
+
+
+function calculateProfit(){
+
+let buy = Number(document.getElementById("buyPrice").value);
+let sell = Number(document.getElementById("sellPrice").value);
+
+if(!buy || !sell){
+document.getElementById("profitResult").innerText="اطلاعات را کامل وارد کنید";
+return;
+}
+
+let profit = sell - buy;
+
+document.getElementById("profitResult").innerText =
+"سود شما: " + profit.toLocaleString() + " تومان";
+
+}
+
+
+function convertMeter(){
+
+let meter = Number(document.getElementById("meter").value);
+
+if(!meter && meter !== 0){
+document.getElementById("meterResult").innerText="مقدار را وارد کنید";
+return;
+}
+
+let centimeter = meter * 100;
+
+document.getElementById("meterResult").innerText =
+meter + " متر = " + centimeter + " سانتی‌متر";
+
+}
+
+
+function generatePassword(){
+
+let chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+let password="";
+
+for(let i=0;i<12;i++){
+
+password += chars.charAt(
+Math.floor(Math.random()*chars.length)
+);
+
+}
+
+document.getElementById("passwordResult").innerText =
+password;
+
+}
+
+
+function countText(){
+
+let text =
+document.getElementById("textInput").value.trim();
+
+if(!text){
+
+document.getElementById("textResult").innerText =
+"متنی وارد نشده است";
+
+return;
+
+}
+
+let letters = text.replace(/\s/g,"").length;
+
+let words = text.split(/\s+/).length;
+
+document.getElementById("textResult").innerText =
+"حروف: " + letters + " | کلمات: " + words;
+
+}
+
+</script>
+
+</body>
+</html>
